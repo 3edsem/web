@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate Element Example</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Part (b): Animate Element</h2>
+    <div class="box" id="animateBox">Box</div>
+    <button id="animateButton">Animate Box</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#animateButton').click(function() {
+            $('#animateBox').animate({
+                width: '200px',
+                height: '200px',
+                fontSize: '24px',
+                lineHeight: '200px'
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>

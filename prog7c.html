@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to CSV and CSV to JSON</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        textarea { width: 100%; }
+    </style>
+</head>
+<body>
+
+    <h2>Convert JSON to CSV</h2>
+    <textarea id="jsonInput" rows="5">
+[{"name":"John","age":30,"city":"New York"},{"name":"Jane","age":25,"city":"London"}]
+    </textarea>
+    <button onclick="convertToCSV()">Convert to CSV</button>
+
+    <h2>Convert CSV to JSON</h2>
+    <textarea id="csvInput" rows="5">
+name,age,city
+John,30,New York
+Jane,25,London
+    </textarea>
+    <button onclick="convertToJSON()">Convert to JSON</button>
+
+    <h3>Result:</h3>
+    <pre id="output"></pre>
+
+    <script>
+        function convertToCSV() {
+            const jsonArray = JSON.parse(document.getElementById('jsonInput').value);
+            const headers = Object.keys(jsonArray[0]).join(',');
+            const rows = jsonArray.map(obj => Object.values(obj).join(',')).join('\n');
+            document.getElementById('output').textContent = headers + '\n' + rows;
+        }
+
+        function convertToJSON() {
+            const csv = document.getElementById('csvInput').value.split('\n');
+            const headers = csv[0].split(',');
+            const json = csv.slice(1).map(row => {
+                const values = row.split(',');
+                return headers.reduce((acc, header, i) => {
+                    acc[header] = values[i];
+                    return acc;
+                }, {});
+            });
+            document.getElementById('output').textContent = JSON.stringify(json, null, 4);
+        }
+    </script>
+
+</body>
+</html>

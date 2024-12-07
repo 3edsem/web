@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX With jQuery</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        pre { background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+    <h2>Load Text (With jQuery)</h2>
+    <button id="loadTextButton">Load Text</button>
+    <pre id="output"></pre>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#loadTextButton').click(function() {
+            $.ajax({
+                url: 'content.txt',
+                method: 'GET',
+                success: function(data) {
+                    $('#output').text(data);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

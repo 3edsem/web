@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple calculator </title>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #235b05;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator{
+            background-color: #1f6b35a7;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            color: white;
+            width: 300px;
+            text-align: center;
+
+        }
+        .calculator input[type="number"]{
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .calculator input[type="button"]{
+            width: 45%;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #1a2f09;
+            color: whitesmoke;
+        }    
+        .calculator input[type="button"]:hover{      
+            background-color: #174e1a;
+        }
+        .calculator #result{
+            margin-top: 10px;
+            font-size: 24px;
+            color: #FFF4B7;
+            font-weight: bold;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Simple calculator</h2>
+        <input type="number"  id="num1" placeholder="Enter the first number ">
+        <input type="number"  id="num2" placeholder="Enetr second number">
+        <div>
+            <input type="button" value="Sum" onclick="calculate('sum')">
+            <input type="button" value="Product" onclick="calculate('product')">
+            <input type="button" value="Difference" onclick="calculate('difference')">
+            <input type="button" value="Remainder" onclick="calculate('remainder')">
+            <input type="button" value="Quotient" onclick="calculate('quotient')">
+            <input type="button" value="power" onclick="calculate('power')">
+            <input type="button" value="Square Root" onclick="calculate('sqrt')">
+            <input type="button" value="Square" onclick="calculate('square')">
+        </div>
+        <br>
+        <div id="result"></div>
+    </div>
+    <script>
+        function calculate(operation){
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            let result="";
+
+            switch (operation) {
+                case 'sum':
+                    result=num1+num2;
+                    break;
+                case 'product':
+                    result = num1*num2;
+                    break;
+                case 'difference':
+                    result = num1-num2;
+                    break;
+                case 'remainder':
+                    result = num1%num2;
+                    break;
+                case 'quotient':
+                    result = num1/num2;
+                    break;
+                case 'power': 
+                    result = Math.pow(num1,num2);
+                    break;
+                case 'sqrt': 
+                    result = Math.sqrt(num1);
+                    break;
+                case 'square':
+                    result = num1*num1;
+                    break;
+                default:
+                    result = 'Invalid opertion'
+                    break;
+            }
+            document.getElementById('result').innerText = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>

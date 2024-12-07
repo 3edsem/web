@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanilla JS AJAX Example</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+}
+#content {
+margin-top: 20px;
+padding: 10px;
+background-color: #f4f4f4;
+border-radius: 5px;
+}
+</style>
+</head>
+<body>
+<h1>Load Content from a File with AJAX (Vanilla JS)</h1>
+<button id="loadContent">Load Content</button>
+<div id="content"></div>
+<script>
+document.getElementById('loadContent').addEventListener('click', function() {
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'content.txt', true);
+xhr.onload = function() {
+if (this.status == 200) {
+document.getElementById('content').innerHTML = this.responseText;
+}
+};
+xhr.send();
+});
+</script>
+</body>
+</html>
