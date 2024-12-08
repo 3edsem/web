@@ -3,107 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sort Student Records</title>
+    <title>Student Records</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-            background-color: #f4f4f4;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-        }
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
     </style>
 </head>
 <body>
+    <div class="container">
+        <h2>Student Records</h2>
+        <?php
+            // Database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "students";
 
-   
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-    <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "students";
-        // Database connection
-        $conn = mysqli_connect($servername, $username, $password,
-$dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+            // Fetch student records
+            $sql = "SELECT usn, name, address FROM students";
+            $result = $conn->query($sql);
 
-        // Fetch student records
-        $sql = "SELECT * FROM students";
-        $result = $conn->query($sql);
+            // Store records in an array
+            $students = array();
+            while($row = $result->fetch_assoc()) {
+                $students[] = $row;
+            }
 
-        $students = [];
-        while ($row = $result->fetch_assoc()) {
-            $students[] = $row;
-        }
-        echo " <h1>Before sort </h1>
-        <table>
-                <tr>
-                    <th>USN</th>
-                    <th>Name</th>
-                    <th>address</th>
-                </tr>";
+            // Display student records before sorting
+            echo "<h3>Before Sorting</h3>";
+            echo "<table>";
+            echo "<tr><th>USN</th><th>Name</th><th>Address</th></tr>";
+            foreach($students as $student) {
+                echo "<tr>";
+                echo "<td>" . $student['usn'] . "</td>";
+                echo "<td>" . $student['name'] . "</td>";
+                echo "<td>" . $student['address'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
 
-        foreach ($students as $student) {
-            echo "<tr>
-                    <td>{$student['usn']}</td>
-                    <td>{$student['name']}</td>
-                    <td>{$student['address']}</td>
-                  </tr>";
-        }
-
-        echo "</table>";
-        // Selection Sort
-        $n = count($students);
-        for ($i = 0; $i < $n - 1; $i++) {
-            $minIndex = $i;
-            for ($j = $i + 1; $j < $n; $j++) {
-                if ($students[$j]['usn'] > $students[$minIndex]['usn']) {
-                    $minIndex = $j;
+            // Selection Sort Algorithm
+            function selectionSort(&$arr) {
+                $n = count($arr);
+                for ($i = 0; $i < $n - 1; $i++) {
+                    $min_index = $i;
+                    for ($j = $i + 1; $j < $n; $j++) {
+                        if ($arr[$j]['usn'] < $arr[$min_index]['usn']) {
+                            $min_index = $j;
+                        }
+                    }
+                    // Swap the found minimum element with the first element
+                    $temp = $arr[$min_index];
+                    $arr[$min_index] = $arr[$i];
+                    $arr[$i] = $temp;
                 }
             }
-            $temp = $students[$i];
-            $students[$i] = $students[$minIndex];
-            $students[$minIndex] = $temp;
-        }
-        
 
-        // Display sorted records
-        echo "<h1>After sort </h1>
-        <table>
-                <tr>
-                    <th>USN</th>
-                    <th>Name</th>
-                    <th>address</th>
-                </tr>";
+            // Sort the student records
+            selectionSort($students);
 
-        foreach ($students as $student) {
-            echo "<tr>
-                    <td>{$student['usn']}</td>
-                    <td>{$student['name']}</td>
-                    <td>{$student['address']}</td>
-                  </tr>";
-        }
+            // Display student records after sorting
+            echo "<h3>After Sorting</h3>";
+            echo "<table>";
+            echo "<tr><th>USN</th><th>Name</th><th>Address</th></tr>";
+            foreach($students as $student) {
+                echo "<tr>";
+                echo "<td>" . $student['usn'] . "</td>";
+                echo "<td>" . $student['name'] . "</td>";
+                echo "<td>" . $student['address'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
 
-        echo "</table>";
-
-        $conn->close();
-    ?>
-
+            // Close connection
+            $conn->close();
+        ?>
+    </div>
 </body>
 </html>
