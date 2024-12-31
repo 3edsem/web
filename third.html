@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled HTML Document</title>
+    <link rel="stylesheet" href="style.css"><style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+h2 {
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    color: #34495e;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+hr {
+    border: 1px solid #ecf0f1;
+    margin: 2em 0;
+}
+
+p {
+    color: #7f8c8d;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+
+.div-container {
+    background-color: #ecf0f1;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.span-highlight {
+    background-color: #f39c12;
+    color: #fff;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+
+#current-time {
+    font-size: 0.9em;
+    color: #2ecc71;
+}
+
+
+div p {
+    font-style: italic;
+}
+
+
+div > p {
+    text-align: justify;
+}
+
+h3 + p {
+    color: #e74c3c;
+}
+
+
+h2 ~ p {
+    color: #3498db;
+}
+
+
+a[href^="https"] {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+a[href^="https"]:hover {
+    text-decoration: underline;
+}
+
+
+a:visited {
+    color: #8e44ad;
+}
+
+a:hover {
+    color: #d35400;
+}
+
+
+p::first-line {
+    font-weight: bold;
+    color: #16a085;
+}
+
+img {
+    width: 800px;
+    height: 500px;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <h2>Heading Level 2</h2>
+    <h3>Heading Level 3</h3>
+    <hr>
+    <p>This is a paragraph to demonstrate the styles applied to the <code>p</code> tag. 
+        The first line of this paragraph should be bold and colored differently.</p>
+    
+    <div class="div-container">
+        <p>This paragraph is inside a <code>div</code> container and should be styled 
+            accordingly with italic text and justified alignment.</p>
+        <span class="span-highlight">Highlighted Text in Span</span>
+    </div>
+    
+    <p>Another paragraph following an <code>h3</code> tag should be colored differently.</p>
+
+    <p>The following paragraph is a sibling of an <code>h2</code> tag and should have its own 
+        unique color.</p>
+
+    <time id="current-time">2024-12-08T14:18:00+09:00</time>
+
+    <p>Check out this <a href="https://example.com">link</a> and notice the hover effect!</p>
+    <p>Previously visited link: <a href="https://example.com/visited">visited link</a></p>
+    
+    <img src="https://th.bing.com/th/id/R.d42c4ed343b9468acf1759b529068cf9?rik=i%2bLFqLmWWUtEfQ&riu=http%3a%2f%2fwww.agarum.com%2fphotos%2f1%2f2%2f34%2f684%2fc%2fl%2f78e0997ca71fd27bb66ca5d8ed820e05.jpg&ehk=LWBqkkK3Q24HmadLOfioFmPaKzHzfLQAPBvnf9T%2fof0%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="Placeholder Image">
+</body>
+</html>

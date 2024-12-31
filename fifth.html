@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newspaper Layout</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+header {
+background-color: #4CAF50;
+color: white;
+text-align: center;
+padding: 20px;
+}
+nav {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 10px;
+}
+nav a {
+color: white;
+margin: 0 15px;
+text-decoration: none;
+font-size: 18px;
+}
+section {
+display: flex;
+padding: 20px;
+}
+article {
+flex: 3;
+background-color: #f4f4f4;
+padding: 20px;
+margin-right: 20px;
+border-radius: 5px;
+}
+aside {
+flex: 1;
+background-color: #f0e68c;
+padding: 20px;
+border-radius: 5px;
+}
+figure {
+text-align: center;
+margin: 20px 0;
+}
+figure img {
+max-width: 100%;
+height: auto;
+border-radius: 5px;
+}
+figure figcaption {
+font-size: 14px;
+color: #555;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+}
+table, th, td {
+border: 1px solid #ddd;
+}
+th, td {
+padding: 10px;
+text-align: left;
+}
+th {
+background-color: #333;
+color: white;
+}
+td {
+background-color: #fff;
+}
+footer {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 10px;
+position: fixed;
+width: 100%;
+bottom: 0;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Daily News</h1>
+<p>Your source for the latest news</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+<a href="#">World</a>
+<a href="#">Politics</a>
+<a href="#">Technology</a>
+<a href="#">Sports</a>
+</nav>
+<section>
+<article>
+<h2>Main Article</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<figure>
+<img src="https://via.placeholder.com/600x300" alt="News Image">
+<figcaption>Image caption goes here</figcaption>
+</figure>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<h3>Table of Data</h3>
+<table>
+<tr>
+<th>Category</th>
+<th>Details</th>
+</tr>
+<tr>
+<td>World</td>
+<td>Global news updates</td>
+</tr>
+<tr>
+<td>Politics</td>
+<td>Political insights and analysis</td>
+</tr>
+<tr>
+<td>Technology</td>
+<td>Latest tech trends</td>
+</tr>
+<tr>
+<td>Sports</td>
+<td>Sports news and scores</td>
+</tr>
+</table>
+</article>
+<aside>
+<h2>Related Articles</h2>
+<ul>
+<li><a href="#">Article 1</a></li>
+<li><a href="#">Article 2</a></li>
+<li><a href="#">Article 3</a></li>
+</ul>
+</aside>
+</section>
+<footer>
+<p>&copy; 2024 Daily News. All rights reserved.</p>
+</footer>
+</body>
+</html>
