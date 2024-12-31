@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9 th program </title>
+    
+</head>
+<body>
+    <p id="paragraph"> this is an exsisting paragraph</p>
+    <ul id="list">
+        <li>List item 1</li>
+        <li>List item 2</li>
+    </ul>
+    <button id="appendButton">Append Button </button>
+    <hr>
+    <div id="animateBox" class="box">Box</div>
+    <button id="animateButton">Animate Box</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#appendButton').click(function() {
+            $('#paragraph').append('This is the appended content ');
+            $('#list').append('<li>Appended list item</li>');
+        });
+        
+        $('#animateButton').click(function(){
+            $('#animateBox').animate({
+                width:'200px',
+                height:'200px',
+                fontSize:'24px',
+                color:'red',
+                lineHeight:'200px'
+            },1000);
+        });
+        $('#animateButton').click(function(){
+            $('#animateBox').animate({
+                width:'200px',
+                height:'200px',
+                fontSize:'24px',
+                color:'red',
+                lineHeight:'200px'
+            },1000,function(){
+                $(this).css('background-color','lightgreen');
+            });
+        });
+    </script>
+</body>
+</html>
