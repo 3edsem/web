@@ -23,8 +23,6 @@
     <p class="counter">
         <?php
             $filename = "counter.txt";
-
-            // Check if the file exists
             if (!file_exists($filename)) {
                 $count = 0;
             } else {
