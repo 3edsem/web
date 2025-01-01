@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert JSON result to date</title>
+</head>
+<style>
+    body{
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 20px;
+    }
+    #output{
+        margin-top: 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 20px;
+        color: black;
+        background-color:whitesmoke;
+    }
+</style>
+<body>
+  <h2>Convert JSON result to date</h2>
+  <textarea id="jsoninput" cols="60" rows="10" placeholder="Enterjsonresult">{"Date":"2025-01-01"}</textarea>
+  <br><br>
+  <button onclick="converttodate()">Convert to Date</button>  
+<pre id="output"></pre>
+<script>
+    function converttodate(){
+        const jsoninput=document.getElementById("jsoninput").value;
+        try{
+            const parsedjson=JSON.parse(jsoninput);
+        const date=new Date(parsedjson.Date);
+    document.getElementById("output").innerText=`coverted date ${date}`;
+    }
+    catch(error){
+        document.getElementById("output").innerText=`invalid json format`;
+    
+    }}
+</script></body>
+</html>
