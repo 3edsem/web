@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertjsontoobject</title>
+    <style>
+        h2{color: black}
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+          background-color: white;   
+        }
+        textarea{
+            border: 2px solid black;
+            background-color: whitesmoke;
+            border-radius: 5px;
+        }
+        button{
+            border: 2px solid black;
+            background-color:whitesmoke;
+            border-radius: 5px;
+        }
+        pre {
+            background-color: whitesmoke;
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+        <h2>Convert json to object</h2>
+        <textarea id="jsoninput" cols="50" rows="10" placeholder="Enterjsoninput">{"Name":"john","age":32,"city":"a"}</textarea>
+        <br><br><button onclick="convertoobject()">convert to object</button>
+        <h2>output</h2>
+        <pre id="output"></pre>  
+    <script>
+        function convertoobject(){
+            const jsoninput = document.getElementById("jsoninput").value;
+            try {
+                const parsedjson = JSON.parse(jsoninput);
+                const stringrdjson = JSON.stringify(parsedjson, null, 2);
+                document.getElementById("output").innerText = stringrdjson;
+            }
+            catch (error) {
+                document.getElementById("output").innerText = "Invaid json input";
+            }
+        }
+    </script>
+</body>
+</html>
